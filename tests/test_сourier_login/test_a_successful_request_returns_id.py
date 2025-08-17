@@ -2,7 +2,7 @@ import requests
 import random
 import string
 import pytest
-from Sprint_7.data import Accept_Order,Text_Of_Mistake
+from Sprint_7.data import AcceptOrder,TextOfMistake
 
 class TestCourierRegistration:
     @staticmethod
@@ -20,11 +20,11 @@ class TestCourierRegistration:
         }
 
     def test_successful_request_returns_id(self):
-        response = requests.post(Accept_Order.can_be_created_courier, data=self.payload)
+        response = requests.post(AcceptOrder.can_be_created_courier, data=self.payload)
         assert response.status_code == 201
 
         auth_payload = {"login": self.login, "password": self.password}
-        response = requests.post(Accept_Order.сourier_login, data=auth_payload)
+        response = requests.post(AcceptOrder.сourier_login, data=auth_payload)
         assert 'id' in response.json()
 
 
@@ -43,19 +43,19 @@ class TestCourierLogin:
             "firstName": self.first_name
         }
         # Регистрируем курьера перед тестами логина
-        requests.post(Accept_Order.can_be_created_courier, data=self.payload)
+        requests.post(AcceptOrder.can_be_created_courier, data=self.payload)
 
     def test_courier_can_log_in(self):
         auth_payload = {"login": self.login, "password": self.password}
-        response = requests.post(Accept_Order.сourier_login, data=auth_payload)
+        response = requests.post(AcceptOrder.сourier_login, data=auth_payload)
         assert response.status_code == 200
 
     def test_non_existent_user(self):
         auth_payload = {"login": "nonexistent", "password": "password123"}
-        response = requests.post(Accept_Order.сourier_login, data=auth_payload)
-        assert response.json()['message'] == Text_Of_Mistake.errer_6
+        response = requests.post(AcceptOrder.сourier_login, data=auth_payload)
+        assert response.json()['message'] == TextOfMistake.errer_6
 
     def test_missing_login_field(self):
         auth_payload = {"password": self.password}
-        response = requests.post(Accept_Order.сourier_login, data=auth_payload)
+        response = requests.post(AcceptOrder.сourier_login, data=auth_payload)
         assert response.json()['code'] == 400

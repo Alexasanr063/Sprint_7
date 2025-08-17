@@ -1,6 +1,6 @@
 import random
 import string
-class Accept_Order:
+class AcceptOrder:
     Url_accept_order_1 =     'https://qa-scooter.praktikum-services.ru/api/v1/orders/accept/145?courierId=585596'
     Url_accept_order_2 =     'https://qa-scooter.praktikum-services.ru/api/v1/orders/accept/386594?courierId=123'
     Url_accept_order_3 =     'https://qa-scooter.praktikum-services.ru/api/v1/orders/accept/1149?courierId=12'
@@ -17,7 +17,7 @@ class Accept_Order:
     remove_courier_3 =       'https://qa-scooter.praktikum-services.ru/api/v1/courier/585595'
     сourier_login =          'https://qa-scooter.praktikum-services.ru/api/v1/courier/login'
 
-class Text_Of_Mistake:
+class TextOfMistake:
     errer_1 = 'Заказа с таким id не существует'
     errer_2 = 'Курьера с таким id не существует'
     errer_3 = 'Недостаточно данных для поиска'
@@ -25,7 +25,7 @@ class Text_Of_Mistake:
     errer_5 = "Заказ не найден"
     errer_6 = 'Учетная запись не найдена'
 
-class Data_For_The_Test:
+class DataForTheTest:
     payload = {
         "firstName": "Naruto",
         "lastName": "Uchiha",
@@ -70,7 +70,7 @@ class Data_For_The_Test:
         "comment": "Saske, come back to Konoha"
     }
 
-class Create_Data_For_Use:
+class CreateDataForUse:
     @staticmethod
     def generate_random_string(length):
         """Генерация случайной строки"""
@@ -79,9 +79,9 @@ class Create_Data_For_Use:
 
     @staticmethod
     def register_new_courier():
-        login = Create_Data_For_Use.generate_random_string(10)
-        password = Create_Data_For_Use.generate_random_string(10)
-        first_name = Create_Data_For_Use.generate_random_string(10)
+        login = CreateDataForUse.generate_random_string(10)
+        password = CreateDataForUse.generate_random_string(10)
+        first_name = CreateDataForUse.generate_random_string(10)
 
         payload = {
         "login": login,
